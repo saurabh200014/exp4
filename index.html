@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>order page</title>
+    <style>
+        .cont{
+            position: absolute;
+            display: flex;
+            width: 400px;
+            height: 300px;
+           
+            flex-direction: column;
+          
+            background-color: beige;
+            border-style: solid;
+         
+          
+        }
+        .title{
+            text-decoration: underline;
+            text-align: center;
+            background-color: cornsilk;
+            border-style: dashed;
+        }
+        .box{
+            display: block;
+            text-align: center;
+            background-color: gainsboro;
+        }
+    </style>
+    <script type="text/javascript">
+        function print(){
+            const quantity = document.getElementById('quantity').value;
+            const date=document.getElementById('date').value;
+            var size = document.getElementsByName('S');
+            var rate_value;
+            for(var i = 0; i < size.length; i++){
+                if(size[i].checked){
+                    rate_value = size[i].value;
+                    }
+            }
+            var company  = document.getElementById('company').value;
+            var Window=window.open("","msgwindow","width=400,height=500");
+            Window.document.write("<h1>Reciept</h1>");
+          
+            Window.document.write("<p>quantity: "+quantity+"</p>");
+            Window.document.write("<p>date: "+date+"</p>");
+            Window.document.write("<p>size: "+rate_value+"</p>");
+            Window.document.write("<p>comapny: "+company+"</p>");
+            
+        }
+        function formValidation(){
+            var ucompany=document.registration.company;
+            if(companyselect(ucompany)){
+                
+            }
+            return false;
+
+        }
+        function companyselect(ucompany)
+        {
+            if(ucompany.value == "Def")
+                {
+                    alert('Select your company from the list');
+                    ucompany.focus();
+                    return false;
+                }
+            else
+            {
+                return true;
+            }
+        }
+        
+
+    </script>
+</head>
+<body >
+    <div class="cont">
+        <button onclick="takeInput()" >check exp4 2.2</button>
+    <h1 class="title">
+        Order Page
+    </h1>
+    <div class="box">
+        <form action="" name="registration" method="get" onsubmit=" return formValidation()" id="myfrm">
+            <div>
+                Date: <input type="date" id="date"> 
+            </div>
+            <br>
+            <div>
+                Quantity: <input type="number" class="form-control" id="quantity">
+            </div>
+            <br>
+            <div id="size">
+                Size: L <input type="radio" id="l" value="L" name="S"> XL <input type="radio" id="xl" value="XL" name="S">
+            </div>
+            <br>
+            <div>
+                <label for="company">Company</label>
+                <select name="company" id="company">
+                    <option selected="" value="Def" >(Please select a company)</option>
+                    <option value="puma">puma</option>
+                    <option value="nike">nike</option>
+                    <option value="hrx">hrx</option>
+                </select>
+            </div>
+            <br>
+            <br>
+            <div>
+                <input type="submit" name="submit" value="Submit">
+            </div>
+        </form>
+        <p align="center"><input type="button" onclick="print()" value="print"></p>
+    </div>
+   
+</div>
+<script src="index.js"></script>
+</body>
+</html>
